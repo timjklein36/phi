@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Phi</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: black;
+    }
+
+    div#box {
+      position: fixed;
+      background: white;
+    }
+
+    .golden {
+      --phi-prime-percent: 61.803%;
+      position: absolute;
+      top: calc((100% - var(--phi-prime-percent, 60%)) / 2);
+      left: calc((100% - var(--phi-prime-percent, 60%)) / 2);
+      width: var(--phi-prime-percent, 60%);
+      height: var(--phi-prime-percent, 60%);
+      border: 2px dashed rgba(255, 0, 0, 0.5);
+    }
+
+    .square {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .square.flipped {
+      top: initial;
+      right: initial;
+      bottom: 0;
+      left: 0;
+    }
+
+    .square.width {
+      border-bottom: 2px dashed rgba(0, 0, 255, 0.5);
+    }
+
+    .square.flipped.width {
+      border-bottom: none;
+      border-top: 2px dashed rgba(0, 0, 255, 0.5);
+    }
+
+    .square.height {
+      border-left: 2px dashed rgba(0, 0, 255, 0.5);
+    }
+
+    .square.flipped.height {
+      border-left: none;
+      border-right: 2px dashed rgba(0, 0, 255, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <div class="golden">
+      <div class="square"></div>
+      <div class="square flipped"></div>
+      <div class="golden">
+        <div class="square"></div>
+        <div class="square flipped"></div>
+        <div class="golden">
+          <div class="square"></div>
+          <div class="square flipped"></div>
+          <div class="golden">
+            <div class="square"></div>
+            <div class="square flipped"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="square"></div>
+    <div class="square flipped"></div>
+  </div>
+  <script>
+    function resize() {
+      const box = document.getElementById('box');
+      const device = {
+        width: window.innerWidth,
+        height: window.innerHeight
+      };
+      const rect = golden(device.width, device.height);
+
+      if (device.height > device.width) {
+        box.style.width = rect.y + 'px';
+        box.style.height = rect.x + 'px';
+        box.style.top = ((device.height - rect.x) / 2) + 'px';
+        box.style.left = ((device.width - rect.y) / 2) + 'px';
+      } else {
+        box.style.width = rect.x + 'px';
+        box.style.height = rect.y + 'px';
+        box.style.top = ((device.height - rect.y) / 2) + 'px';
+        box.style.left = ((device.width - rect.x) / 2) + 'px';
+      }
+
+      const squares = document.getElementsByClassName('square');
+      Array.prototype.forEach.call(squares, (square) => {
+        if (device.height > device.width) {
+          square.classList.remove('height');
+          square.classList.add('width');
+          square.style.width = '100%';
+          square.style.height = square.offsetWidth + 'px';
+        } else {
+          square.classList.remove('width');
+          square.classList.add('height');
+          square.style.height = '100%';
+          square.style.width = square.offsetHeight + 'px';
+        }
+      });
+    }
+
+    function golden(x, y) {
+      const PHI = (1 + Math.sqrt(5)) / 2;
+      const larger = x > y ? x : y;
+      const smaller = x > y ? y : x;
+      if (larger / smaller > PHI) {
+        return { x: PHI * smaller, y: smaller };
+      } else {
+        return { x: larger, y: larger / PHI };
+      }
+    }
+
+    window.addEventListener('resize', resize);
+    resize();
+  </script>
+</body>
+</html>
