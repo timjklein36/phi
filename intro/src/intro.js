@@ -3,8 +3,8 @@ import * as phi from '../../lib/js/phi/phi';
 function resize() {
     const box = document.getElementById('box');
     const device = {
-        width: window.innerWidth,
-        height: window.innerHeight
+        width: document.body.scrollWidth,
+        height: document.documentElement.clientHeight
     };
     const rect = phi.similarGoldenRect(device.width, device.height);
 
@@ -28,6 +28,26 @@ function resize() {
             square.style.width = square.offsetHeight + 'px';
         }
     });
+}
+
+export function toggleActive(element, active) {
+    console.log('toggleActive run');
+    console.log(element);
+    // if (active) {
+    //     element.classList.add('active');
+    //     element.classList.remove('inactive');
+    // } else if (active === null || active === undefined) {
+    //     if (element.classList.contains('active')) {
+    //         element.classList.add('inactive');
+    //         element.classList.remove('active');
+    //     } else {
+    //         element.classList.add('active');
+    //         element.classList.remove('inactive');
+    //     }
+    // } else {
+    //     element.classList.add('inactive');
+    //     element.classList.remove('active');
+    // }
 }
 
 window.addEventListener('resize', resize);
