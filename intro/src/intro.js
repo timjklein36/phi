@@ -12,6 +12,7 @@ function resize() {
     box.style.height = rect.y + 'px';
     box.style.top = ((device.height - rect.y) / 2) + 'px';
     box.style.left = ((device.width - rect.x) / 2) + 'px';
+    box.style.outline = (device.height + device.width) + 'px solid black';
 
     const squares = document.getElementsByClassName('square');
     Array.prototype.forEach.call(squares, (square) => {

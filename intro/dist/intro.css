@@ -9,12 +9,11 @@
 body {
     margin: 0;
     padding: 0;
-    background: black;
 }
 
 div#box {
     position: fixed;
-    background: white;
+    background: rgba(0,0,0,0);
 }
 
 .golden {
