@@ -1,0 +1,58 @@
+:root {
+    --phi-prime-percent: 61.803%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: black;
+}
+
+div#box {
+    position: fixed;
+    background: white;
+}
+
+.golden {
+    position: absolute;
+    top: calc((100% - var(--phi-prime-percent, 60%)) / 2);
+    left: calc((100% - var(--phi-prime-percent, 60%)) / 2);
+    width: var(--phi-prime-percent, 60%);
+    height: var(--phi-prime-percent, 60%);
+    border: 2px dashed rgba(255, 0, 0, 0.5);
+}
+
+.square {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.square.flipped {
+    top: initial;
+    right: initial;
+    bottom: 0;
+    left: 0;
+}
+
+.square.width {
+    border-bottom: 2px dashed rgba(0, 0, 255, 0.5);
+}
+
+.square.flipped.width {
+    border-bottom: none;
+    border-top: 2px dashed rgba(0, 0, 255, 0.5);
+}
+
+.square.height {
+    border-left: 2px dashed rgba(0, 0, 255, 0.5);
+}
+
+.square.flipped.height {
+    border-left: none;
+    border-right: 2px dashed rgba(0, 0, 255, 0.5);
+}
