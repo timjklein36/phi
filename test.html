@@ -83,55 +83,43 @@
     <div class="square flipped"></div>
   </div>
   <script>
+    // import phi
+
     function resize() {
-      const box = document.getElementById('box');
-      const device = {
-        width: window.innerWidth,
-        height: window.innerHeight
-      };
-      const rect = golden(device.width, device.height);
+        const box = document.getElementById('box');
+        const device = {
+          width: window.innerWidth,
+          height: window.innerHeight
+        };
+        const rect = golden(device.width, device.height);
 
-      if (device.height > device.width) {
-        box.style.width = rect.y + 'px';
-        box.style.height = rect.x + 'px';
-        box.style.top = ((device.height - rect.x) / 2) + 'px';
-        box.style.left = ((device.width - rect.y) / 2) + 'px';
-      } else {
-        box.style.width = rect.x + 'px';
-        box.style.height = rect.y + 'px';
-        box.style.top = ((device.height - rect.y) / 2) + 'px';
-        box.style.left = ((device.width - rect.x) / 2) + 'px';
-      }
-
-      const squares = document.getElementsByClassName('square');
-      Array.prototype.forEach.call(squares, (square) => {
         if (device.height > device.width) {
-          square.classList.remove('height');
-          square.classList.add('width');
-          square.style.width = '100%';
-          square.style.height = square.offsetWidth + 'px';
+          box.style.width = rect.y + 'px';
+          box.style.height = rect.x + 'px';
+          box.style.top = ((device.height - rect.x) / 2) + 'px';
+          box.style.left = ((device.width - rect.y) / 2) + 'px';
         } else {
-          square.classList.remove('width');
-          square.classList.add('height');
-          square.style.height = '100%';
-          square.style.width = square.offsetHeight + 'px';
+          box.style.width = rect.x + 'px';
+          box.style.height = rect.y + 'px';
+          box.style.top = ((device.height - rect.y) / 2) + 'px';
+          box.style.left = ((device.width - rect.x) / 2) + 'px';
         }
-      });
-    }
 
-    function golden(x, y) {
-      const PHI = (1 + Math.sqrt(5)) / 2;
-      const larger = x > y ? x : y;
-      const smaller = x > y ? y : x;
-      if (larger / smaller > PHI) {
-        return { x: PHI * smaller, y: smaller };
-      } else {
-        return { x: larger, y: larger / PHI };
+        const squares = document.getElementsByClassName('square');
+        Array.prototype.forEach.call(squares, (square) => {
+          if (device.height > device.width) {
+            square.classList.remove('height');
+            square.classList.add('width');
+            square.style.width = '100%';
+            square.style.height = square.offsetWidth + 'px';
+          } else {
+            square.classList.remove('width');
+            square.classList.add('height');
+            square.style.height = '100%';
+            square.style.width = square.offsetHeight + 'px';
+          }
+        });
       }
-    }
-
-    window.addEventListener('resize', resize);
-    resize();
   </script>
 </body>
 </html>
