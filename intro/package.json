@@ -5,12 +5,14 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "webpack-serve": "^0.3.1",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.2"
   }

@@ -85,10 +85,13 @@
     </p>
 
 </div>
+<div style="position: absolute; top: 50px; left: 50px; z-index: 2;">
+    <button (click)="intro.toggleActive(this)">Box</button>
+</div>
 <div id="box">
-    <div class="golden"></div>
-    <div class="square"></div>
-    <div class="square flipped"></div>
+    <div class="golden inactive"></div>
+    <div class="square inactive"></div>
+    <div class="square flipped inactive"></div>
 </div>
 <script src="bundle.js"></script>
 </body>

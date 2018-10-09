@@ -16,13 +16,21 @@ div#box {
     background: rgba(0,0,0,0);
 }
 
+.inactive {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
 .golden {
     position: absolute;
     top: calc((100% - var(--phi-prime-percent, 60%)) / 2);
     left: calc((100% - var(--phi-prime-percent, 60%)) / 2);
     width: var(--phi-prime-percent, 60%);
     height: var(--phi-prime-percent, 60%);
-    border: 2px dashed rgba(255, 0, 0, 0.5);
+    border: 2px dashed rgba(255, 0, 0, 1);
 }
 
 .square {
@@ -39,19 +47,19 @@ div#box {
 }
 
 .square.width {
-    border-bottom: 2px dashed rgba(0, 0, 255, 0.5);
+    border-bottom: 2px dashed rgba(0, 0, 255, 1);
 }
 
 .square.flipped.width {
     border-bottom: none;
-    border-top: 2px dashed rgba(0, 0, 255, 0.5);
+    border-top: 2px dashed rgba(0, 0, 255, 1);
 }
 
 .square.height {
-    border-left: 2px dashed rgba(0, 0, 255, 0.5);
+    border-left: 2px dashed rgba(0, 0, 255, 1);
 }
 
 .square.flipped.height {
     border-left: none;
-    border-right: 2px dashed rgba(0, 0, 255, 0.5);
+    border-right: 2px dashed rgba(0, 0, 255, 1);
 }
