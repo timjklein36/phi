@@ -12,8 +12,8 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "webpack-serve": "^0.3.1",
     "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "webpack-serve": "^2.0.2"
   }
 }
